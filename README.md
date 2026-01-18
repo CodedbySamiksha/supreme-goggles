@@ -35,7 +35,7 @@ This project demonstrates clean UI design, React fundamentals, and real-world AP
 ### Clone the repository
 ```bash
 git clone <your-repository-url>
-
+```
 Install dependencies:
 npm install
 
