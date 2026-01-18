@@ -34,7 +34,8 @@ This project demonstrates clean UI design, React fundamentals, and real-world AP
 
 ### Clone the repository
 ```bash
-git clone <your-repository-url>
+git clone <https://github.com/CodedbySamiksha/supreme-goggles
+>
 ```
 Install dependencies:
 npm install
