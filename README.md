@@ -62,7 +62,7 @@ The API was chosen because it is free, browser-friendly, and does not require an
 
 #### The app runs locally on:
 
-[http://localhost:5174](http://localhost:5174)
+[http://localhost:5174](http://localhost:5173)
 
 
 ### 📚 What I Learned
