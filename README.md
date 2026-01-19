@@ -1,7 +1,7 @@
 # Slab 1 Frontend Project
 
-A React-based frontend application developed as part of the Slab 1 requirement.  
-This project demonstrates clean UI design, React fundamentals, and real-world API integration.
+A React-based frontend application developed as part of the Slab 1 requirement for the internship at Qskill.
+This project focuses on clean UI design, React fundamentals, and real-world API integration.
 
 ---
 
@@ -15,9 +15,10 @@ This project demonstrates clean UI design, React fundamentals, and real-world AP
 
 ### 🌍 Translator
 - Translates text between multiple languages
-- Uses a public translation API
-- Includes loading and error handling
-- Built using `async/await` and `fetch`
+- Supports language selection (English, Hindi,       French, Spanish, Malayalam)
+- Uses a real-world public translation API
+- Handles loading states and API errors gracefully
+- Built using async/await and fetch
 
 ---
 
@@ -26,39 +27,58 @@ This project demonstrates clean UI design, React fundamentals, and real-world AP
 - React (Vite)
 - Tailwind CSS
 - JavaScript (ES6+)
-- Public Translation API
+- MyMemory Translation API
 
 ---
 
-## 🚀 Getting Started
+## 🚀 The Process
 
-### Clone the repository
-```bash
-git clone <your-repository-url>
+### 1.Clone the repository
 
-Install dependencies:
+git clone : https://github.com/CodedbySamiksha/supreme-goggles
+
+### 2.Install dependencies:
 npm install
 
-Run the project:
+### 3.Run the project:
 npm run dev
 
+## 🌐 Translation API Used
 
-The app runs locally on:
+This project uses the **MyMemory Translation API** for text translation.
+
+API Endpoint:
+https://api.mymemory.translated.net/
+
+The API was chosen because it is free, browser-friendly, and does not require an API key.
+
+## How it works:
+
+- The user enters text and selects source and target languages
+- A fetch request is sent with query parameters (q and langpair)
+- The translated text is retrieved from responseData.translatedText
+- No API key is required
+
+#### The app runs locally on:
 
 [http://localhost:5174](http://localhost:5174)
 
 
-#### 📚 What I Learned
+### 📚 What I Learned
 
-- React basics
-- State management
-- API handling
+- React component structure and routing
+- State management using hooks (`useState`)
+- Handling asynchronous API calls with `fetch`
+- Implementing loading and error states
+- Debugging common frontend issues (CORS, API failures, syntax errors)
+- Improving UI/UX using Tailwind CSS
+- Writing clean and readable project documentation using Markdown
 
-#### 👩‍💻 Author
+### 👩‍💻 Author
 
 Sameeksha
 
-#### 📌 Notes
+### 📌 Notes
 
 This project was built for learning purposes.
 
@@ -68,7 +88,7 @@ This project was built for learning purposes.
 ![Home Page](./screenshots/home.png)
 
 ### String Generator
-![String Generator](./screenshots/generator.png)
+![String Generator](./screenshots/string-generator.png)
 
 ### Translator
 ![Translator](./screenshots/translator.png)

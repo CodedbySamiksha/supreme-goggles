@@ -1,111 +1,116 @@
 import { useState } from "react";
 
 export default function Translator() {
-  const [inputText, setInputText] = useState("");
+  const [text, setText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
   const [fromLang, setFromLang] = useState("en");
   const [toLang, setToLang] = useState("hi");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  async function handleTranslate() {
-    if (!inputText.trim()) {
-      setError("Please enter text to translate.");
-      return;
-    }
+  const handleTranslate = async () => {
+    if (!text.trim()) return;
 
     setLoading(true);
-    setError("");
     setTranslatedText("");
 
     try {
       const response = await fetch(
         `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
-          inputText
+          text
         )}&langpair=${fromLang}|${toLang}`
       );
-
-      if (!response.ok) {
-        throw new Error("API error");
-      }
-
       const data = await response.json();
       setTranslatedText(data.responseData.translatedText);
-    } catch (err) {
-      setError("Translation failed. Please try again.");
+    } catch {
+      setTranslatedText("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-[#2b124c] text-[#dfb6b2] px-6">
-      <h2 className="text-3xl font-semibold">Translator</h2>
+    <div className="min-h-screen bg-[#2b124c] flex justify-center items-start pt-52 px-6">
+      {/* OUTER CARD — LOWERED MORE */}
+      <div className="w-full max-w-2xl bg-[#3a1b66] rounded-lg shadow-md px-8 py-7 text-[#dfb6b2]">
+        <h2 className="text-4xl font-semibold mb-8 text-center">
+          Translator
+        </h2>
 
-      {/* Language selectors */}
-      <div className="flex gap-4">
-        <select
-          value={fromLang}
-          onChange={(e) => setFromLang(e.target.value)}
-          className="px-3 py-2 rounded bg-[#dfb6b2] text-[#2b124c]"
-        >
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-          <option value="fr">French</option>
-          <option value="es">Spanish</option>
-        </select>
+        {/* LANGUAGE BLOCK */}
+        <div className="flex items-center justify-center gap-5 mb-6">
+          <select
+            value={fromLang}
+            onChange={(e) => setFromLang(e.target.value)}
+            className="px-2.5 py-1.5 text-sm rounded bg-[#dfb6b2]/90 text-[#2b124c]/80 focus:outline-none"
+          >
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="ml">Malayalam</option>
+          </select>
 
-        <span className="text-xl">→</span>
+          <span className="text-xl opacity-70">→</span>
 
-        <select
-          value={toLang}
-          onChange={(e) => setToLang(e.target.value)}
-          className="px-3 py-2 rounded bg-[#dfb6b2] text-[#2b124c]"
-        >
-          <option value="hi">Hindi</option>
-          <option value="en">English</option>
-          <option value="fr">French</option>
-          <option value="es">Spanish</option>
-        </select>
-      </div>
-
-      {/* Input */}
-      <textarea
-        rows="4"
-        placeholder="Enter text here..."
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        className="
-          w-full max-w-md p-3 rounded
-          bg-[#dfb6b2] text-[#2b124c]
-          placeholder-[#2b124c]/70
-          border border-[#1f0d38]
-          focus:outline-none focus:ring-2 focus:ring-[#e7c9c6]
-        "
-      />
-
-      {/* Translate button */}
-      <button
-        onClick={handleTranslate}
-        disabled={loading}
-        className="px-8 py-3 rounded-lg bg-[#dfb6b2] text-[#2b124c]
-                   hover:bg-[#e7c9c6] transition disabled:opacity-60"
-      >
-        {loading ? "Translating..." : "Translate"}
-      </button>
-
-      {/* Error */}
-      {error && <div className="text-red-300 text-sm">{error}</div>}
-
-      {/* Output */}
-      {translatedText && (
-        <div className="mt-4 p-4 border border-[#dfb6b2] rounded max-w-md text-center">
-          {translatedText}
+          <select
+            value={toLang}
+            onChange={(e) => setToLang(e.target.value)}
+            className="px-2.5 py-1.5 text-sm rounded bg-[#dfb6b2]/90 text-[#2b124c]/80 focus:outline-none"
+          >
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="ml">Malayalam</option>
+          </select>
         </div>
-      )}
+
+        {/* INPUT BLOCK */}
+        <div className="mx-auto w-full max-w-lg">
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={3}
+            placeholder="Enter text to translate..."
+            className="w-full rounded p-2.5 mb-4 bg-[#dfb6b2]/20 text-[#dfb6b2] text-sm placeholder:text-[#dfb6b2]/50 focus:outline-none"
+          />
+        </div>
+
+        {/* BUTTON */}
+        <div className="mx-auto w-full max-w-lg">
+          <button
+            onClick={handleTranslate}
+            disabled={loading}
+            className="w-full bg-[#dfb6b2] text-[#2b124c] py-1.5 rounded-lg text-sm font-medium hover:opacity-90 transition disabled:opacity-60"
+          >
+            {loading ? "Translating..." : "Translate"}
+          </button>
+        </div>
+
+        {/* OUTPUT BLOCK */}
+        <div className="mx-auto w-full max-w-lg mt-4">
+          <div className="min-h-[60px] rounded bg-[#dfb6b2]/20 p-2.5 text-sm text-[#dfb6b2]">
+            {translatedText ? (
+              translatedText
+            ) : (
+              <span className="italic opacity-60">
+                Translated text will appear here
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
 
 
