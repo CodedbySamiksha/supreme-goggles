@@ -33,20 +33,12 @@ This project focuses on clean UI design, React fundamentals, and real-world API 
 
 ## 🚀 The Process
 
-<<<<<<< HEAD
+
 ### 1.Clone the repository
 
 git clone : https://github.com/CodedbySamiksha/supreme-goggles
 
 ### 2.Install dependencies:
-=======
-### Clone the repository
-```bash
-git clone <https://github.com/CodedbySamiksha/supreme-goggles
->
-```
-Install dependencies:
->>>>>>> fce473c5c05e2466daf4e0b8f8cbb35a7223efe4
 npm install
 
 ### 3.Run the project:
