@@ -64,6 +64,8 @@ The API was chosen because it is free, browser-friendly, and does not require an
 
 [http://localhost:5173](http://localhost:5173)
 
+#### Live Demo
+[View the live app](https://supreme-goggles-six.vercel.app/)
 
 ### 📚 What I Learned
 
