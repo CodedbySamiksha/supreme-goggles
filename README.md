@@ -94,6 +94,7 @@ This project was built for learning purposes.
 ### Translator
 ![Translator](./screenshots/translator.png)
 
-
+### Menu
+![Menu](./screenshots/hamburger.menu.png)
 
 
